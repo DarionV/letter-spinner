@@ -1,7 +1,15 @@
+import { useState } from "react";
 import "./App.css";
 import "./index.css";
 
-function App() {
+function App({ letters }) {
+  const [currentLetter, setCurrentLetter] = useState("?");
+
+  function getRandomLetter() {
+    const randomIndex = Math.floor(Math.random() * letters.length);
+    setCurrentLetter(letters[randomIndex]);
+  }
+
   return (
     <>
       <nav className="padding-medium">
@@ -12,10 +20,12 @@ function App() {
         <div className="title-container">
           <h1 className="padding-large">Letter spinner</h1>
         </div>
-        <div className="letter-container padding-large flex-center">?</div>
+        <div className="letter-container padding-large flex-center">
+          {currentLetter}
+        </div>
         <div className="timer-container flex-center padding-large">00:00</div>
         <div className="controls-container flex-center padding-medium">
-          <button>Play</button>
+          <button onClick={getRandomLetter}>Play</button>
         </div>
       </main>
       <footer>Credits</footer>
