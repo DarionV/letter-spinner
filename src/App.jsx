@@ -1,19 +1,22 @@
 import "./App.css";
+import "./index.css";
 
 function App() {
   return (
     <>
-      <nav>
+      <nav className="padding-medium">
         <button>Audio</button>
         <button>Settings</button>
       </nav>
       <main>
-        <div className="header-container">
-          <h1>Letter spinner</h1>
+        <div className="title-container">
+          <h1 className="padding-large">Letter spinner</h1>
         </div>
-        <div className="letter-container">?</div>
-        <div className="timer-container">00:00</div>
-        <div className="controls-container">Play</div>
+        <div className="letter-container padding-large flex-center">?</div>
+        <div className="timer-container flex-center padding-large">00:00</div>
+        <div className="controls-container flex-center padding-medium">
+          <button>Play</button>
+        </div>
       </main>
       <footer>Credits</footer>
     </>
