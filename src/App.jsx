@@ -1,62 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import "./index.css";
+import Timer from "./components/Timer";
+import Letter from "./components/Letter";
 
 function App(props) {
-  const NR_OF_SPINS = 40;
-  const SPIN_SPEED_IN_MS = 100;
+  const [isFlipping, setFlipping] = useState(false);
+  const [requestFlip, setRequestFlip] = useState(false);
 
-  const [currentLetter, setCurrentLetter] = useState("?");
-  const [isSpinning, setSpinning] = useState(false);
-  const [shouldSpin, setShouldSpin] = useState(false);
-  const [letters, setLetters] = useState(props.letters);
+  // const [isCountingDown, setCountingDown] = useState(false);
 
-  let controlButton = isSpinning ? (
+  let controlButton = isFlipping ? (
     ""
   ) : (
-    <button onClick={spinLetters}>Play</button>
+    <button onClick={toggleRequestFlip}>Play</button>
   );
 
-  useEffect(() => {
-    console.log(currentLetter);
-  }, [currentLetter]);
-
-  // useEffect(() => {
-  //   console.log(isSpinning);
-  // }, [isSpinning]);
-
-  useEffect(() => {
-    console.log(letters);
-  }, [letters]);
-
-  function scrambleLetters() {
-    let scrambledLetters = [...letters].sort(() => {
-      return Math.random() - 0.5;
-    });
-    setLetters(scrambledLetters);
-    setShouldSpin(true);
+  function toggleFlipping() {
+    setFlipping(!isFlipping);
   }
 
-  function spinLetters() {
-    if (isSpinning) return;
-    setSpinning(true);
-    scrambleLetters();
+  function toggleRequestFlip() {
+    setRequestFlip(!requestFlip);
   }
-
-  useEffect(() => {
-    if (!shouldSpin) return;
-
-    for (let i = 0; i < NR_OF_SPINS; i++) {
-      setTimeout(() => {
-        if (i >= letters.length) setCurrentLetter(letters[i - letters.length]);
-        else setCurrentLetter(letters[i]);
-        if (i === NR_OF_SPINS - 1) {
-          setSpinning(false);
-          setShouldSpin(false);
-        }
-      }, i * SPIN_SPEED_IN_MS);
-    }
-  }, [shouldSpin, letters]);
 
   return (
     <>
@@ -66,12 +32,19 @@ function App(props) {
       </nav>
       <main>
         <div className="title-container">
-          <h1 className="padding-large">Letter spinner</h1>
+          <h1 className="padding-large">Letter Flipper</h1>
         </div>
         <div className="letter-container padding-large flex-center">
-          {currentLetter}
+          <Letter
+            letters={props.letters}
+            requestFlip={requestFlip}
+            toggleFlipping={toggleFlipping}
+            toggleRequestFlip={toggleRequestFlip}
+          />
         </div>
-        <div className="timer-container flex-center padding-large">00:00</div>
+        <div className="timer-container flex-center padding-large">
+          <Timer />
+        </div>
         <div className="controls-container flex-center padding-medium">
           {controlButton}
         </div>
