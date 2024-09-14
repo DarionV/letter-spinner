@@ -5,8 +5,8 @@ function Letter(props) {
   const [currentLetter, setCurrentLetter] = useState("?");
   const [shouldFlip, setShouldFlip] = useState(false);
 
-  const NR_OF_FLIPS = 20;
-  const FLIP_DELAY_IN_MS = 100;
+  const NR_OF_FLIPS = 30;
+  const FLIP_DELAY_IN_MS = 80;
 
   useEffect(() => {
     if (!props.requestFlip) return;
@@ -51,17 +51,20 @@ function Letter(props) {
           <div className="wheel"></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
-              <div className="upper-flap flex-center">{currentLetter}</div>
+              <div className="upper-flap flex-center">
+                {currentLetter.toUpperCase()}
+              </div>
             </div>
             <div className="lower-flap-container">
               <div className="lower-flap flex-center flipped-0">
-                {currentLetter}
+                {currentLetter.toUpperCase()}
               </div>
               <div className="lower-flap flipped-1"></div>
               <div className="lower-flap flipped-2"></div>
               <div className="lower-flap flipped-3"></div>
               <div className="lower-flap flipped-4"></div>
               <div className="lower-flap flipped-5"></div>
+              <div className="lower-flaps-shadow"></div>
             </div>
           </div>
           <div className="wheel"></div>

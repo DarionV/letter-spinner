@@ -42,6 +42,7 @@ function App(props) {
 
   return (
     <>
+      <div className="noise"></div>
       <nav className="padding-medium">
         <button>Audio</button>
         <button>Settings</button>

@@ -25,6 +25,26 @@ body {
   height: 100vh;
   background: linear-gradient(45deg, #333434, #474848);
 }
+main,
+nav,
+footer {
+  z-index: 2;
+}
+.noise {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-image: url(/public/images/noise.png);
+  background-size: 200px;
+  background-position: center;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 10%;
+  mix-blend-mode: overlay;
+}
 
 #root {
   display: flex;
@@ -60,6 +80,7 @@ nav {
   width: 100%;
   height: 100%;
   top: 0;
+  z-index: 1;
 }
 
 .wheel {
@@ -103,22 +124,30 @@ nav {
   background-color: cornflowerblue;
   border: 1px solid black;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-  font-size: 1500%;
+  font-size: 1200%;
   color: var(--font-color-white);
   overflow: hidden;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .upper-flap {
-  background-image: url(/public/images/upper-flap.png);
+  /* background-image: url(/public/images/upper-flap.png);
   background-position: center;
-  background-size: cover;
+  background-size: 600%; */
+  background: linear-gradient(#56585a, #55565b);
+  padding-top: 65%;
+  box-shadow: inset 0px 2px 3px rgb(0, 0, 0, 0.5);
 }
 
 .lower-flap {
   height: 65%;
-  background-image: url(/public/images/lower-flap.png);
+  /* background-image: url(/public/images/lower-flap.png);
   background-position: center;
-  background-size: cover;
+  background-size: 800%; */
+  background: linear-gradient(#4f4f51, #504f4f);
+  padding-bottom: 65%;
 }
 
 .flipped-0 {
@@ -127,23 +156,32 @@ nav {
 
 .flipped-1 {
   z-index: 4;
-  transform: translateY(13%);
+  transform: translateY(8%);
 }
 .flipped-2 {
   z-index: 3;
-  transform: translateY(23%);
+  transform: translateY(16%);
 }
 .flipped-3 {
   z-index: 2;
-  transform: translateY(33%);
+  transform: translateY(24%);
 }
 .flipped-4 {
   z-index: 1;
-  transform: translateY(43%);
+  transform: translateY(32%);
 }
 .flipped-5 {
   z-index: 0;
-  transform: translateY(53%);
+  transform: translateY(40%);
+}
+
+.lower-flaps-shadow {
+  box-shadow: inset 0px -15px 15px rgb(0, 0, 0, 0.5);
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .timer-container {
