@@ -43,7 +43,7 @@ function App(props) {
           />
         </div>
         <div className="timer-container flex-center padding-large">
-          <Timer />
+          <Timer isFlipping={isFlipping} />
         </div>
         <div className="controls-container flex-center padding-medium">
           {controlButton}

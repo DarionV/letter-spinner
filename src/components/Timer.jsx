@@ -1,30 +1,41 @@
 import { useEffect, useState } from "react";
 
-// useEffect(() => {
-//   if (!isCountingDown) return;
-//   const timer = setInterval(countDown, 1000);
-// }, [isCountingDown]);
-
-// useEffect(() => {
-//   console.log(seconds);
-// }, [seconds]);
-
-function countDown() {
-  if (seconds <= 0 && minutes >= 1) {
-    setMinutes((prevMinutes) => prevMinutes - 1);
-    setSeconds(59);
-  } else if (seconds === 0 && minutes === 0) {
-    setMinutes((prevMinutes) => prevMinutes - 1);
-    //clear interval
-  } else {
-    setSeconds((prevSeconds) => prevSeconds - 1);
-  }
-}
-
 function Timer(props) {
-  const [seconds, setSeconds] = useState(10);
-  const [minutes, setMinutes] = useState(2);
-  return;
+  const [time, setTime] = useState({ minutes: 0, seconds: 5 });
+  const [shouldCountDown, setShouldCountDown] = useState(true);
+
+  useEffect(() => {
+    if (!shouldCountDown) return;
+    const timer = setInterval(() => {
+      setTime((prevTime) => {
+        const { minutes, seconds } = prevTime;
+
+        if (seconds > 0) {
+          return { minutes, seconds: seconds - 1 };
+        }
+        if (seconds === 0 && minutes > 0) {
+          return { minutes: minutes - 1, seconds: 59 };
+        }
+        if (minutes === 0 && seconds === 0) {
+          clearInterval(timer);
+          setShouldCountDown(false);
+        }
+
+        return { minutes: 0, seconds: 0 };
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [shouldCountDown]);
+
+  return (
+    <>
+      Time Remaining: {time.minutes.toString().padStart(2, "0")}:
+      {time.seconds.toString().padStart(2, "0")}
+    </>
+  );
 }
 
 export default Timer;
