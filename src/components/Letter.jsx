@@ -9,10 +9,6 @@ function Letter(props) {
   const FLIP_DELAY_IN_MS = 100;
 
   useEffect(() => {
-    console.log(currentLetter);
-  }, [currentLetter]);
-
-  useEffect(() => {
     if (!props.requestFlip) return;
     flipLetters();
     props.toggleRequestFlip();

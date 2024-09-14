@@ -7,14 +7,22 @@ import Letter from "./components/Letter";
 function App(props) {
   const [isFlipping, setFlipping] = useState(false);
   const [requestFlip, setRequestFlip] = useState(false);
+  const [isCountingDown, setCountingDown] = useState(false);
+  const [time, setTime] = useState({ minutes: 0, seconds: 5 });
+  const [isPaused, setPaused] = useState(false);
 
-  // const [isCountingDown, setCountingDown] = useState(false);
+  let timerActive = true;
+  let controlButton = "";
 
-  let controlButton = isFlipping ? (
-    ""
-  ) : (
-    <button onClick={toggleRequestFlip}>Play</button>
-  );
+  if (isPaused) {
+    controlButton = <button onClick={togglePause}>Continue</button>;
+  } else if (isCountingDown) {
+    controlButton = <button onClick={togglePause}>Pause</button>;
+  } else if (!isCountingDown && !isFlipping) {
+    controlButton = <button onClick={toggleRequestFlip}>Play</button>;
+  } else {
+    controlButton = "";
+  }
 
   function toggleFlipping() {
     setFlipping(!isFlipping);
@@ -22,6 +30,14 @@ function App(props) {
 
   function toggleRequestFlip() {
     setRequestFlip(!requestFlip);
+  }
+
+  function toggleCountingDown() {
+    setCountingDown(!isCountingDown);
+  }
+
+  function togglePause() {
+    setPaused(!isPaused);
   }
 
   return (
@@ -33,6 +49,8 @@ function App(props) {
       <main>
         <div className="title-container">
           <h1 className="padding-large">Letter Flipper</h1>
+          isPaused: {isPaused.toString()}
+          CountingDown: {isCountingDown.toString()}
         </div>
         <div className="letter-container padding-large flex-center">
           <Letter
@@ -43,7 +61,12 @@ function App(props) {
           />
         </div>
         <div className="timer-container flex-center padding-large">
-          <Timer isFlipping={isFlipping} />
+          <Timer
+            isFlipping={isFlipping}
+            toggleCountingDown={toggleCountingDown}
+            initialTime={time}
+            isPaused={isPaused}
+          />
         </div>
         <div className="controls-container flex-center padding-medium">
           {controlButton}
