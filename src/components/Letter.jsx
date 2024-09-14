@@ -45,24 +45,27 @@ function Letter(props) {
 
   return (
     <>
-      <div className="unit-container">
-        <div className="wheel"></div>
-        <div className="letter-frame flex-center">
-          {/* <div className="upper-flap-container">
-            <div className="upper-flap flex-center">{currentLetter}</div>
-          </div>
-          <div className="lower-flap-container">
-            <div className="lower-flap flex-center flipped-0">
-              {currentLetter}
+      <div className="unit-frame">
+        <img src="images/unit-container.svg" height="250px" alt="" />
+        <div className="unit-container">
+          <div className="wheel"></div>
+          <div className="letter-frame flex-center">
+            <div className="upper-flap-container">
+              <div className="upper-flap flex-center">{currentLetter}</div>
             </div>
-            <div className="lower-flap flipped-1"></div>
-            <div className="lower-flap flipped-2"></div>
-            <div className="lower-flap flipped-3"></div>
-            <div className="lower-flap flipped-4"></div>
-            <div className="lower-flap flipped-5"></div>
-          </div> */}
+            <div className="lower-flap-container">
+              <div className="lower-flap flex-center flipped-0">
+                {currentLetter}
+              </div>
+              <div className="lower-flap flipped-1"></div>
+              <div className="lower-flap flipped-2"></div>
+              <div className="lower-flap flipped-3"></div>
+              <div className="lower-flap flipped-4"></div>
+              <div className="lower-flap flipped-5"></div>
+            </div>
+          </div>
+          <div className="wheel"></div>
         </div>
-        <div className="wheel"></div>
       </div>
     </>
   );

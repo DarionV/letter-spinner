@@ -46,46 +46,48 @@ nav {
 
 /* Letter */
 
+.unit-frame {
+  position: relative;
+  /* border: 1px solid rgba(195, 0, 255, 0.888); */
+}
+
 .unit-container {
-  border: 1px solid rgba(255, 0, 0, 0.888);
-  background-image: url(/public/images/unit-container.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  /* border: 1px solid rgba(255, 0, 0, 0.888); */
   display: flex;
   flex-direction: row;
-  height: 280px;
-  width: 100%;
-  display: flex;
   justify-content: center;
-  padding-bottom: 3%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
 }
 
 .wheel {
+  /* border: 1px solid blue; */
   background: linear-gradient(#111111, #494949, #676159, #101010);
-  width: 3%;
-  height: 30%;
-  margin: 17% 2%;
+  width: 4%;
+  height: 28%;
+  margin: 20% 2%;
 }
 
 .letter-frame {
-  border: 1px solid green;
-  width: 70%;
+  /* border: 1px solid green; */
+  height: 96%;
+  width: 82%;
   flex-direction: column;
-  gap: 2%;
-  /* padding: 0px 2% 2% 2%; */
+  gap: 3%;
   border-radius: 2%;
 }
 
 .lower-flap-container,
 .upper-flap-container {
   position: relative;
-  width: 150px;
+  width: 100%;
   /* border: 1px solid red; */
 }
 
 .upper-flap-container {
-  flex: 1.25;
+  flex: 1.2;
 }
 
 .lower-flap-container {
@@ -100,10 +102,23 @@ nav {
   width: 100%;
   background-color: cornflowerblue;
   border: 1px solid black;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 1500%;
+  color: var(--font-color-white);
+  overflow: hidden;
+}
+
+.upper-flap {
+  background-image: url(/public/images/upper-flap.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .lower-flap {
   height: 65%;
+  background-image: url(/public/images/lower-flap.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .flipped-0 {
@@ -112,23 +127,23 @@ nav {
 
 .flipped-1 {
   z-index: 4;
-  transform: translateY(8px);
+  transform: translateY(13%);
 }
 .flipped-2 {
   z-index: 3;
-  transform: translateY(16px);
+  transform: translateY(23%);
 }
 .flipped-3 {
   z-index: 2;
-  transform: translateY(24px);
+  transform: translateY(33%);
 }
 .flipped-4 {
   z-index: 1;
-  transform: translateY(32px);
+  transform: translateY(43%);
 }
 .flipped-5 {
   z-index: 0;
-  transform: translateY(40px);
+  transform: translateY(53%);
 }
 
 .timer-container {
