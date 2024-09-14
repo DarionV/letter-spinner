@@ -52,14 +52,14 @@ function App(props) {
           isPaused: {isPaused.toString()}
           CountingDown: {isCountingDown.toString()}
         </div>
-        <div className="letter-container padding-large flex-center">
-          <Letter
-            letters={props.letters}
-            requestFlip={requestFlip}
-            toggleFlipping={toggleFlipping}
-            toggleRequestFlip={toggleRequestFlip}
-          />
-        </div>
+
+        <Letter
+          letters={props.letters}
+          requestFlip={requestFlip}
+          toggleFlipping={toggleFlipping}
+          toggleRequestFlip={toggleRequestFlip}
+        />
+
         <div className="timer-container flex-center padding-large">
           <Timer
             isFlipping={isFlipping}

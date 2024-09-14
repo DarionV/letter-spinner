@@ -4,12 +4,26 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-color-white: #f1f1f1;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Pattaya", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
+  color: var(--font-color-white);
+}
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid red;
   height: 100vh;
+  background: linear-gradient(45deg, #333434, #474848);
 }
 
 #root {
@@ -25,19 +39,69 @@ nav {
   align-items: center;
 }
 .title-container {
-  background-color: gray;
+  /* background-color: gray; */
+  border: 1px solid gray;
+  color: var(--font-color-white);
 }
 
+/* Letter */
+
 .letter-container {
-  background-color: rgb(140, 163, 155);
+  /* background-color: rgb(140, 163, 155); */
+  border: 1px solid gray;
+}
+
+.unit-container {
+  /* border: 1px solid rgba(255, 0, 0, 0.172); */
+  display: flex;
+}
+
+.wheel-frame {
+  background-color: black;
+  width: 12px;
+  height: 80px;
+  margin-top: 40px;
+}
+
+.wheel-frame.left {
+  border-radius: 4px 0px 0px 4px;
+  padding: 4px 0px 4px 4px;
+}
+
+.wheel-frame.right {
+  border-radius: 0px 4px 4px 0px;
+  padding: 4px 4px 4px 0px;
+}
+
+.wheel {
+  background: linear-gradient(#111111, #494949, #676159, #101010);
+  width: 100%;
+  height: 90%;
+}
+
+.letter-frame {
+  background-color: black;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0px 4px 4px 4px;
+  border-radius: 4px;
+}
+.upper-flap,
+.lower-flap {
+  border-radius: 4px;
+  height: 100px;
+  width: 150px;
+  background-color: cornflowerblue;
 }
 
 .timer-container {
-  background-color: rgb(131, 131, 162);
+  /* background-color: rgb(131, 131, 162); */
+  border: 1px solid gray;
 }
 
 .controls-container {
-  background-color: beige;
+  /* background-color: beige; */
+  border: 1px solid gray;
 }
 
 footer {

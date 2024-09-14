@@ -43,7 +43,28 @@ function Letter(props) {
     scrambleLetters();
   }
 
-  return <>{currentLetter}</>;
+  return (
+    <>
+      <div className="letter-container padding-large flex-center">
+        <div className="unit-container">
+          <div className="wheel-frame left">
+            <div className="wheel"></div>
+          </div>
+          <div className="letter-frame flex-center">
+            <div className="upper-flap-container">
+              <div className="upper-flap">{currentLetter}</div>
+            </div>
+            <div className="lower-flap-container">
+              <div className="lower-flap">{currentLetter}</div>
+            </div>
+          </div>
+          <div className="wheel-frame right">
+            <div className="wheel"></div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Letter;
