@@ -8,6 +8,14 @@ function Letter(props) {
   const NR_OF_FLIPS = 30;
   const FLIP_DELAY_IN_MS = 80;
 
+  let isFlipping = false;
+
+  const upperFlapFlipNextClass = isFlipping ? "upper-flap-flip-next" : "";
+  const upperFlapFlipClass = isFlipping ? "upper-flap-flip" : "";
+  const lowerFlapFlipClass = isFlipping ? "lower-flap-flip" : "";
+  const lowerFlapFlipNextClass = isFlipping ? "lower-flap-flip-next" : "";
+  const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
+
   useEffect(() => {
     if (!props.requestFlip) return;
     flipLetters();
@@ -51,21 +59,21 @@ function Letter(props) {
           <div className="wheel"></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
-              <div className="upper-flap upper-flap-flip-next">
+              <div className={`upper-flap ${upperFlapFlipNextClass}`}>
                 <div>{currentLetter.toUpperCase()}</div>
               </div>
-              <div className="upper-flap upper-flap-flip">
+              <div className={`upper-flap ${upperFlapFlipClass}`}>
                 <div>{currentLetter.toUpperCase()}</div>
               </div>
             </div>
             <div className="lower-flap-container">
-              <div className="lower-flap  lower-flap-flip-next">
+              <div className={`lower-flap  ${lowerFlapFlipNextClass}`}>
                 <div>{currentLetter.toUpperCase()}</div>
               </div>
-              <div className="lower-flap flipped-0 lower-flap-flip">
+              <div className={`lower-flap flipped-0 ${lowerFlapFlipClass}`}>
                 <div>{currentLetter.toUpperCase()}</div>
               </div>
-              <div className="lower-flap-flip-back">
+              <div className={lowerFlapFlipBackClass}>
                 <div className="lower-flap flipped-1 "></div>
                 <div className="lower-flap flipped-2 "></div>
                 <div className="lower-flap flipped-3 "></div>
