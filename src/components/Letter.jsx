@@ -65,11 +65,13 @@ function Letter(props) {
               <div className="lower-flap flipped-0 lower-flap-flip">
                 <div>{currentLetter.toUpperCase()}</div>
               </div>
-              {/* <div className="lower-flap flipped-1"></div>
-              <div className="lower-flap flipped-2"></div>
-              <div className="lower-flap flipped-3"></div>
-              <div className="lower-flap flipped-4"></div>
-              <div className="lower-flap flipped-5"></div> */}
+              <div className="lower-flap-flip-back">
+                <div className="lower-flap flipped-1 "></div>
+                <div className="lower-flap flipped-2 "></div>
+                <div className="lower-flap flipped-3 "></div>
+                <div className="lower-flap flipped-4 "></div>
+                <div className="lower-flap flipped-5 "></div>
+              </div>
               <div className="lower-flaps-shadow"></div>
             </div>
           </div>

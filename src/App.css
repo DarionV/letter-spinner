@@ -6,7 +6,7 @@
 
 :root {
   --font-color-white: #f1f1f1;
-  --animation-duration: 4s;
+  --animation-duration: 2s;
   font-size: 16px;
 }
 
@@ -216,21 +216,33 @@ nav {
 .upper-flap-flip {
   animation: upper-flap-flip var(--animation-duration);
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .upper-flap-flip-next {
   animation: upper-flap-flip-next var(--animation-duration);
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 .lower-flap-flip {
   animation: lower-flap-flip var(--animation-duration);
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.lower-flap-flip-back {
+  animation: lower-flap-flip-back var(--animation-duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  height: 100%;
+  width: 100%;
 }
 
 .lower-flap-flip-next {
   animation: lower-flap-flip-next var(--animation-duration);
   animation-iteration-count: infinite;
+  animation-timing-function: linear;
   z-index: 6;
 }
 
@@ -243,7 +255,7 @@ nav {
     box-shadow: none;
     transform: rotate3d(1, 0, 0, -85deg);
     translate: 0px 15%;
-    filter: brightness(50%);
+    filter: brightness(50%) blur(7px);
   }
 }
 
@@ -260,17 +272,24 @@ nav {
 @keyframes lower-flap-flip {
   50%,
   100% {
-    transform: translateY(10%);
+    transform: translateY(14%);
+  }
+}
+
+@keyframes lower-flap-flip-back {
+  50%,
+  100% {
+    transform: translateY(7%);
   }
 }
 
 @keyframes lower-flap-flip-next {
   0%,
-  40% {
+  50% {
     display: none;
     transform: rotate3d(1, 0, 0, 83deg);
-    box-shadow: 0px 50px 40px rgb(0, 0, 0, 0.5);
-    filter: brightness(150%);
+    box-shadow: 0px 50px 20px rgb(0, 0, 0, 0.5);
+    filter: brightness(150%) blur(7px);
   }
   100% {
     transform: rotate3d(1, 0, 0, 0deg);
