@@ -14,6 +14,7 @@ function Letter({ character, initialCharacter, flipSpeed }) {
   const lowerFlapFlipClass = isFlipping ? "lower-flap-flip" : "";
   const lowerFlapFlipNextClass = isFlipping ? "lower-flap-flip-next" : "";
   const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
+  const wheelFlipClass = isFlipping ? "wheel-flip" : "";
 
   useEffect(() => {
     flip();
@@ -38,7 +39,7 @@ function Letter({ character, initialCharacter, flipSpeed }) {
       <div className="unit-frame">
         <img src="images/unit-container.svg" height="250px" alt="" />
         <div className="unit-container">
-          <div className="wheel"></div>
+          <div className={`wheel ${wheelFlipClass}`}></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
               <div
@@ -80,7 +81,7 @@ function Letter({ character, initialCharacter, flipSpeed }) {
               <div className="lower-flaps-shadow"></div>
             </div>
           </div>
-          <div className="wheel"></div>
+          <div className={`wheel ${wheelFlipClass}`}></div>
         </div>
       </div>
     </>

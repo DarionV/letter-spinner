@@ -24,7 +24,7 @@ body {
   align-items: center;
   border: 1px solid red;
   height: 100vh;
-  background: linear-gradient(45deg, #333434, #474848);
+  background: linear-gradient(45deg, #333434, #545555);
 }
 main,
 nav,
@@ -37,7 +37,7 @@ footer {
   height: 100%;
   width: 100%;
   background-image: url(/public/images/noise.png);
-  background-size: 600px;
+  background-size: 700px;
   background-position: center;
 
   position: absolute;
@@ -246,6 +246,12 @@ nav {
   z-index: 6;
 }
 
+.wheel-flip {
+  animation: wheel var(--animation-duration);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 @keyframes upper-flap-flip {
   5% {
     transform: rotate3d(1, 0, 0, 0deg);
@@ -293,6 +299,16 @@ nav {
   }
   100% {
     transform: rotate3d(1, 0, 0, 0deg);
+  }
+}
+
+@keyframes wheel {
+  0%,
+  50% {
+    transform: translateX(5%);
+    filter: brightness(95%);
+  }
+  100% {
   }
 }
 
