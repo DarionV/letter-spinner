@@ -76,8 +76,8 @@ function App(props) {
           setShouldFlip(false);
           //   setCountingDown(true);
         }
-        setSpeed(speed + Math.pow(i, 1.6));
-      }, i * (speed + Math.pow(i, 1.6)));
+        setSpeed(speed + Math.pow(i, 1.4));
+      }, i * (speed + Math.pow(i, 1.4)));
     }
   }, [shouldFlip]);
 
@@ -93,7 +93,7 @@ function App(props) {
           <h1 className="padding-large">Letter Flipper</h1>
           {/* isPaused: {isPaused.toString()}
           CountingDown: {isCountingDown.toString()} */}
-          {/* flipSpeed: {speed} */}
+          flipSpeed: {speed}
         </div>
         <div className="padding-large flex-center">
           <Letter
