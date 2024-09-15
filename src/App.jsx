@@ -13,9 +13,10 @@ function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
+  const FLIP_SPEED_IN_MS = 150;
+  const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
-  const NR_OF_FLIPS = 30;
-  const FLIP_DELAY_IN_MS = 80;
+  const NR_OF_FLIPS = 19;
 
   let timerActive = true;
   let controlButton = "";
@@ -35,6 +36,7 @@ function App(props) {
   // }
 
   function startFlip() {
+    setSpeed(FLIP_SPEED_IN_MS);
     setShouldFlip(true);
   }
 
@@ -63,6 +65,7 @@ function App(props) {
     if (!shouldFlip) return;
     setLetters(scrambleLetters(letters));
     setFlipping(true);
+    setSpeed(FLIP_SPEED_IN_MS);
 
     for (let i = 0; i < NR_OF_FLIPS; i++) {
       setTimeout(() => {
@@ -73,7 +76,8 @@ function App(props) {
           setShouldFlip(false);
           //   setCountingDown(true);
         }
-      }, i * FLIP_DELAY_IN_MS);
+        setSpeed(speed + Math.pow(i, 1.6));
+      }, i * (speed + Math.pow(i, 1.6)));
     }
   }, [shouldFlip]);
 
@@ -87,11 +91,16 @@ function App(props) {
       <main>
         <div className="title-container">
           <h1 className="padding-large">Letter Flipper</h1>
-          isPaused: {isPaused.toString()}
-          CountingDown: {isCountingDown.toString()}
+          {/* isPaused: {isPaused.toString()}
+          CountingDown: {isCountingDown.toString()} */}
+          {/* flipSpeed: {speed} */}
         </div>
         <div className="padding-large flex-center">
-          <Letter character={letter} initialCharacter={letter} />
+          <Letter
+            character={letter}
+            initialCharacter={letter}
+            flipSpeed={speed}
+          />
         </div>
 
         {/* <div className="timer-container flex-center padding-large">

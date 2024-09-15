@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-function Letter({ character, initialCharacter }) {
+function Letter({ character, initialCharacter, flipSpeed }) {
   const [newCharacter, setNewCharacter] = useState(initialCharacter);
+  //   const [character, setCharacter] = useState("");
   const [prevCharacter, setPrevCharacter] = useState("");
+  const [isFlipping, setIsFlipping] = useState(false);
   //   const [currentLetter, setCurrentLetter] = useState("?");
 
-  const FLIP_SPEED_IN_MS = 400;
-
-  let isFlipping = false;
+  //   const FLIP_SPEED_IN_MS = 500;
 
   const upperFlapFlipNextClass = isFlipping ? "upper-flap-flip-next" : "";
   const upperFlapFlipClass = isFlipping ? "upper-flap-flip" : "";
@@ -16,8 +16,6 @@ function Letter({ character, initialCharacter }) {
   const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
 
   useEffect(() => {
-    setPrevCharacter(newCharacter);
-    setNewCharacter(character);
     flip();
   }, [character]);
 
@@ -27,10 +25,12 @@ function Letter({ character, initialCharacter }) {
   //   }
 
   function flip() {
-    isFlipping = true;
+    setIsFlipping(true);
+    setNewCharacter(character);
     setTimeout(() => {
-      isFlipping = false;
-    }, FLIP_SPEED_IN_MS);
+      setIsFlipping(false);
+      setPrevCharacter(character);
+    }, flipSpeed - 100);
   }
 
   return (
@@ -41,21 +41,36 @@ function Letter({ character, initialCharacter }) {
           <div className="wheel"></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
-              <div className={`upper-flap ${upperFlapFlipNextClass}`}>
+              <div
+                className={`upper-flap ${upperFlapFlipNextClass}`}
+                style={{ animationDuration: `${flipSpeed}ms` }}
+              >
                 <div>{newCharacter.toUpperCase()}</div>
               </div>
-              <div className={`upper-flap ${upperFlapFlipClass}`}>
+              <div
+                className={`upper-flap ${upperFlapFlipClass}`}
+                style={{ animationDuration: `${flipSpeed}ms` }}
+              >
                 <div>{prevCharacter.toUpperCase()}</div>
               </div>
             </div>
             <div className="lower-flap-container">
-              <div className={`lower-flap  ${lowerFlapFlipNextClass}`}>
+              <div
+                className={`lower-flap  ${lowerFlapFlipNextClass}`}
+                style={{ animationDuration: `${flipSpeed}ms` }}
+              >
                 <div>{newCharacter.toUpperCase()}</div>
               </div>
-              <div className={`lower-flap flipped-0 ${lowerFlapFlipClass}`}>
+              <div
+                className={`lower-flap flipped-0 ${lowerFlapFlipClass}`}
+                style={{ animationDuration: `${flipSpeed}ms` }}
+              >
                 <div>{prevCharacter.toUpperCase()}</div>
               </div>
-              <div className={lowerFlapFlipBackClass}>
+              <div
+                className={lowerFlapFlipBackClass}
+                style={{ animationDuration: `${flipSpeed}ms` }}
+              >
                 <div className="lower-flap flipped-1 "></div>
                 <div className="lower-flap flipped-2 "></div>
                 <div className="lower-flap flipped-3 "></div>
