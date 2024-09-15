@@ -51,19 +51,25 @@ function Letter(props) {
           <div className="wheel"></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
-              <div className="upper-flap flex-center">
-                {currentLetter.toUpperCase()}
+              <div className="upper-flap upper-flap-flip-next">
+                <div>{currentLetter.toUpperCase()}</div>
+              </div>
+              <div className="upper-flap upper-flap-flip">
+                <div>{currentLetter.toUpperCase()}</div>
               </div>
             </div>
             <div className="lower-flap-container">
-              <div className="lower-flap flex-center flipped-0">
-                {currentLetter.toUpperCase()}
+              <div className="lower-flap  lower-flap-flip-next">
+                <div>{currentLetter.toUpperCase()}</div>
               </div>
-              <div className="lower-flap flipped-1"></div>
+              <div className="lower-flap flipped-0 lower-flap-flip">
+                <div>{currentLetter.toUpperCase()}</div>
+              </div>
+              {/* <div className="lower-flap flipped-1"></div>
               <div className="lower-flap flipped-2"></div>
               <div className="lower-flap flipped-3"></div>
               <div className="lower-flap flipped-4"></div>
-              <div className="lower-flap flipped-5"></div>
+              <div className="lower-flap flipped-5"></div> */}
               <div className="lower-flaps-shadow"></div>
             </div>
           </div>

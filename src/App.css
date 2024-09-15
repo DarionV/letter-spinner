@@ -6,6 +6,7 @@
 
 :root {
   --font-color-white: #f1f1f1;
+  --animation-duration: 4s;
   font-size: 16px;
 }
 
@@ -36,13 +37,13 @@ footer {
   height: 100%;
   width: 100%;
   background-image: url(/public/images/noise.png);
-  background-size: 200px;
+  background-size: 600px;
   background-position: center;
 
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 10%;
+  opacity: 8%;
   mix-blend-mode: overlay;
 }
 
@@ -68,6 +69,7 @@ nav {
 
 .unit-frame {
   position: relative;
+
   /* border: 1px solid rgba(195, 0, 255, 0.888); */
 }
 
@@ -98,6 +100,7 @@ nav {
   flex-direction: column;
   gap: 3%;
   border-radius: 2%;
+  overflow: hidden;
 }
 
 .lower-flap-container,
@@ -105,10 +108,13 @@ nav {
   position: relative;
   width: 100%;
   /* border: 1px solid red; */
+  perspective: 800px;
 }
 
 .upper-flap-container {
   flex: 1.2;
+  /* overflow: hidden; */
+  box-shadow: 0px 3px 4px rgb(0, 0, 0, 0.5);
 }
 
 .lower-flap-container {
@@ -121,15 +127,20 @@ nav {
   border-radius: 4px;
   height: 100%;
   width: 100%;
-  background-color: cornflowerblue;
-  border: 1px solid black;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-  font-size: 1200%;
+  font-size: 1300%;
   color: var(--font-color-white);
   overflow: hidden;
-  font-family: "Rajdhani", sans-serif;
+  /* font-family: "Rajdhani", sans-serif;
   font-weight: 700;
+  font-style: normal; */
+
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
   font-style: normal;
+
+  transition-property: all;
+  transition-duration: 1s;
 }
 
 .upper-flap {
@@ -137,8 +148,11 @@ nav {
   background-position: center;
   background-size: 600%; */
   background: linear-gradient(#56585a, #55565b);
-  padding-top: 65%;
-  box-shadow: inset 0px 2px 3px rgb(0, 0, 0, 0.5);
+  box-shadow: inset 0px 2px 3px rgb(0, 0, 0, 0.9),
+    0px 2px 6px rgba(0, 0, 0, 0.5);
+  /* border: 1px solid rgb(76, 76, 76); */
+  transform-origin: bottom left;
+  text-align: center;
 }
 
 .lower-flap {
@@ -147,32 +161,47 @@ nav {
   background-position: center;
   background-size: 800%; */
   background: linear-gradient(#4f4f51, #504f4f);
-  padding-bottom: 65%;
+  text-align: center;
+  transform-origin: top left;
+}
+
+.lower-flap div {
+  transform: translateY(-48%);
+}
+
+.upper-flap div {
+  transform: translateY(-8%);
 }
 
 .flipped-0 {
   z-index: 5;
+  /* border: 1px solid red; */
 }
 
 .flipped-1 {
   z-index: 4;
-  transform: translateY(8%);
+  transform: translateY(14%);
+  filter: brightness(90%);
 }
 .flipped-2 {
   z-index: 3;
-  transform: translateY(16%);
+  transform: translateY(24%);
+  filter: brightness(80%);
 }
 .flipped-3 {
   z-index: 2;
-  transform: translateY(24%);
+  transform: translateY(34%);
+  filter: brightness(70%);
 }
 .flipped-4 {
   z-index: 1;
-  transform: translateY(32%);
+  transform: translateY(44%);
+  filter: brightness(60%);
 }
 .flipped-5 {
   z-index: 0;
-  transform: translateY(40%);
+  transform: translateY(54%);
+  filter: brightness(50%);
 }
 
 .lower-flaps-shadow {
@@ -183,6 +212,72 @@ nav {
   height: 100%;
   width: 100%;
 }
+/* Letter animation */
+.upper-flap-flip {
+  animation: upper-flap-flip var(--animation-duration);
+  animation-iteration-count: infinite;
+}
+
+.upper-flap-flip-next {
+  animation: upper-flap-flip-next var(--animation-duration);
+  animation-iteration-count: infinite;
+}
+
+.lower-flap-flip {
+  animation: lower-flap-flip var(--animation-duration);
+  animation-iteration-count: infinite;
+}
+
+.lower-flap-flip-next {
+  animation: lower-flap-flip-next var(--animation-duration);
+  animation-iteration-count: infinite;
+  z-index: 6;
+}
+
+@keyframes upper-flap-flip {
+  5% {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+  50%,
+  100% {
+    box-shadow: none;
+    transform: rotate3d(1, 0, 0, -85deg);
+    translate: 0px 15%;
+    filter: brightness(50%);
+  }
+}
+
+@keyframes upper-flap-flip-next {
+  0% {
+    translate: 0px -15%;
+  }
+  50%,
+  100% {
+    translate: 0px 0%;
+  }
+}
+
+@keyframes lower-flap-flip {
+  50%,
+  100% {
+    transform: translateY(10%);
+  }
+}
+
+@keyframes lower-flap-flip-next {
+  0%,
+  40% {
+    display: none;
+    transform: rotate3d(1, 0, 0, 83deg);
+    box-shadow: 0px 50px 40px rgb(0, 0, 0, 0.5);
+    filter: brightness(150%);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+}
+
+/* Timer */
 
 .timer-container {
   /* background-color: rgb(131, 131, 162); */
