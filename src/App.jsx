@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
 import Timer from "./components/Timer";
@@ -10,6 +10,12 @@ function App(props) {
   const [isCountingDown, setCountingDown] = useState(false);
   const [time, setTime] = useState({ minutes: 0, seconds: 5 });
   const [isPaused, setPaused] = useState(false);
+  const [shouldFlip, setShouldFlip] = useState(false);
+  const [letter, setLetter] = useState("?");
+  const [letters, setLetters] = useState(scrambleLetters(props.letters));
+
+  const NR_OF_FLIPS = 30;
+  const FLIP_DELAY_IN_MS = 80;
 
   let timerActive = true;
   let controlButton = "";
@@ -19,17 +25,17 @@ function App(props) {
   } else if (isCountingDown) {
     controlButton = <button onClick={togglePause}>Pause</button>;
   } else if (!isCountingDown && !isFlipping) {
-    controlButton = <button onClick={toggleRequestFlip}>Play</button>;
+    controlButton = <button onClick={startFlip}>Play</button>;
   } else {
     controlButton = "";
   }
 
-  function toggleFlipping() {
-    setFlipping(!isFlipping);
-  }
+  // function toggleFlipping() {
+  //   setFlipping(!isFlipping);
+  // }
 
-  function toggleRequestFlip() {
-    setRequestFlip(!requestFlip);
+  function startFlip() {
+    setShouldFlip(true);
   }
 
   function toggleCountingDown() {
@@ -39,6 +45,37 @@ function App(props) {
   function togglePause() {
     setPaused(!isPaused);
   }
+
+  function scrambleLetters(array) {
+    let scrambledLetters = [...array].sort(() => {
+      return Math.random() - 0.5;
+    });
+    return scrambledLetters;
+  }
+
+  // useEffect(() => {
+  //   if (!props.requestFlip) return;
+  //   flipLetters();
+  //   props.toggleRequestFlip();
+  // }, [props.requestFlip]);
+
+  useEffect(() => {
+    if (!shouldFlip) return;
+    setLetters(scrambleLetters(letters));
+    setFlipping(true);
+
+    for (let i = 0; i < NR_OF_FLIPS; i++) {
+      setTimeout(() => {
+        if (i >= letters.length) setLetter(letters[i - letters.length]);
+        else setLetter(letters[i]);
+        if (i === NR_OF_FLIPS - 1) {
+          setFlipping(false);
+          setShouldFlip(false);
+          //   setCountingDown(true);
+        }
+      }, i * FLIP_DELAY_IN_MS);
+    }
+  }, [shouldFlip]);
 
   return (
     <>
@@ -54,12 +91,7 @@ function App(props) {
           CountingDown: {isCountingDown.toString()}
         </div>
         <div className="padding-large flex-center">
-          <Letter
-            letters={props.letters}
-            requestFlip={requestFlip}
-            toggleFlipping={toggleFlipping}
-            toggleRequestFlip={toggleRequestFlip}
-          />
+          <Letter character={letter} initialCharacter={letter} />
         </div>
 
         {/* <div className="timer-container flex-center padding-large">

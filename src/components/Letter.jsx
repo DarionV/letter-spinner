@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 
-function Letter(props) {
-  const [letters, setLetters] = useState(props.letters);
-  const [currentLetter, setCurrentLetter] = useState("?");
-  const [shouldFlip, setShouldFlip] = useState(false);
+function Letter({ character, initialCharacter }) {
+  const [newCharacter, setNewCharacter] = useState(initialCharacter);
+  const [prevCharacter, setPrevCharacter] = useState("");
+  //   const [currentLetter, setCurrentLetter] = useState("?");
 
-  const NR_OF_FLIPS = 30;
-  const FLIP_DELAY_IN_MS = 80;
+  const FLIP_SPEED_IN_MS = 400;
 
   let isFlipping = false;
 
@@ -17,38 +16,21 @@ function Letter(props) {
   const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
 
   useEffect(() => {
-    if (!props.requestFlip) return;
-    flipLetters();
-    props.toggleRequestFlip();
-  }, [props.requestFlip]);
+    setPrevCharacter(newCharacter);
+    setNewCharacter(character);
+    flip();
+  }, [character]);
 
-  useEffect(() => {
-    if (!shouldFlip) return;
+  //   function flipLetters() {
+  //     props.toggleFlipping();
+  //     scrambleLetters();
+  //   }
 
-    for (let i = 0; i < NR_OF_FLIPS; i++) {
-      setTimeout(() => {
-        if (i >= letters.length) setCurrentLetter(letters[i - letters.length]);
-        else setCurrentLetter(letters[i]);
-        if (i === NR_OF_FLIPS - 1) {
-          props.toggleFlipping();
-          setShouldFlip(false);
-          //   setCountingDown(true);
-        }
-      }, i * FLIP_DELAY_IN_MS);
-    }
-  }, [props.shouldFlip, letters]);
-
-  function scrambleLetters() {
-    let scrambledLetters = [...letters].sort(() => {
-      return Math.random() - 0.5;
-    });
-    setLetters(scrambledLetters);
-    setShouldFlip(true);
-  }
-
-  function flipLetters() {
-    props.toggleFlipping();
-    scrambleLetters();
+  function flip() {
+    isFlipping = true;
+    setTimeout(() => {
+      isFlipping = false;
+    }, FLIP_SPEED_IN_MS);
   }
 
   return (
@@ -60,18 +42,18 @@ function Letter(props) {
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
               <div className={`upper-flap ${upperFlapFlipNextClass}`}>
-                <div>{currentLetter.toUpperCase()}</div>
+                <div>{newCharacter.toUpperCase()}</div>
               </div>
               <div className={`upper-flap ${upperFlapFlipClass}`}>
-                <div>{currentLetter.toUpperCase()}</div>
+                <div>{prevCharacter.toUpperCase()}</div>
               </div>
             </div>
             <div className="lower-flap-container">
               <div className={`lower-flap  ${lowerFlapFlipNextClass}`}>
-                <div>{currentLetter.toUpperCase()}</div>
+                <div>{newCharacter.toUpperCase()}</div>
               </div>
               <div className={`lower-flap flipped-0 ${lowerFlapFlipClass}`}>
-                <div>{currentLetter.toUpperCase()}</div>
+                <div>{prevCharacter.toUpperCase()}</div>
               </div>
               <div className={lowerFlapFlipBackClass}>
                 <div className="lower-flap flipped-1 "></div>
