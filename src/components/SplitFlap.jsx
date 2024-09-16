@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function SplitFlap({
   character = "?",
   initialCharacter = "?",
-  flipSpeed = 800,
+  flipSpeed = 100,
   size = 220,
 }) {
   const [newCharacter, setNewCharacter] = useState(initialCharacter);

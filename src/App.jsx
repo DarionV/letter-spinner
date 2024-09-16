@@ -7,7 +7,7 @@ import SplitFlap from "./components/SplitFlap";
 function App(props) {
   const [isFlipping, setFlipping] = useState(false);
   const [isCountingDown, setCountingDown] = useState(false);
-  const [time, setTime] = useState({ minutes: 0, seconds: 5 });
+  const [time, setTime] = useState({ minutes: 2, seconds: 5 });
   const [isPaused, setPaused] = useState(false);
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
