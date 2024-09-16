@@ -6,7 +6,6 @@ import Letter from "./components/Letter";
 
 function App(props) {
   const [isFlipping, setFlipping] = useState(false);
-  const [requestFlip, setRequestFlip] = useState(false);
   const [isCountingDown, setCountingDown] = useState(false);
   const [time, setTime] = useState({ minutes: 0, seconds: 5 });
   const [isPaused, setPaused] = useState(false);
@@ -16,7 +15,7 @@ function App(props) {
   const FLIP_SPEED_IN_MS = 180;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
-  const NR_OF_FLIPS = 16;
+  const NR_OF_FLIPS = 15;
 
   let timerActive = true;
   let controlButton = "";
@@ -26,14 +25,14 @@ function App(props) {
   } else if (isCountingDown) {
     controlButton = <button onClick={togglePause}>Pause</button>;
   } else if (!isCountingDown && !isFlipping) {
-    controlButton = <button onClick={startFlip}>Play</button>;
+    controlButton = (
+      <button onClick={startFlip}>
+        <img src="/images/play.svg" alt="" height={"42px"} />
+      </button>
+    );
   } else {
     controlButton = "";
   }
-
-  // function toggleFlipping() {
-  //   setFlipping(!isFlipping);
-  // }
 
   function startFlip() {
     setSpeed(FLIP_SPEED_IN_MS);
@@ -55,29 +54,27 @@ function App(props) {
     return scrambledLetters;
   }
 
-  // useEffect(() => {
-  //   if (!props.requestFlip) return;
-  //   flipLetters();
-  //   props.toggleRequestFlip();
-  // }, [props.requestFlip]);
-
   useEffect(() => {
     if (!shouldFlip) return;
     setLetters(scrambleLetters(letters));
     setFlipping(true);
     setSpeed(FLIP_SPEED_IN_MS);
+    const speedDecreaseFactor = 1.8;
 
     for (let i = 0; i < NR_OF_FLIPS; i++) {
       setTimeout(() => {
         if (i >= letters.length) setLetter(letters[i - letters.length]);
         else setLetter(letters[i]);
         if (i === NR_OF_FLIPS - 1) {
-          setFlipping(false);
           setShouldFlip(false);
-          //   setCountingDown(true);
+          // Add small delay before showing the playbutton again
+          setTimeout(() => {
+            setFlipping(false);
+          }, 400);
         }
-        setSpeed(speed + Math.pow(i, 1.8));
-      }, i * (speed + Math.pow(i, 1.8)));
+        // Decrease speed exponentially
+        setSpeed(speed + Math.pow(i, speedDecreaseFactor));
+      }, i * (speed + Math.pow(i, speedDecreaseFactor)));
     }
   }, [shouldFlip]);
 
@@ -95,6 +92,7 @@ function App(props) {
           CountingDown: {isCountingDown.toString()} */}
           flipSpeed: {speed}
         </div>
+        <div className="separator"></div>
         <div className="padding-large flex-center">
           <Letter
             character={letter}
@@ -102,6 +100,7 @@ function App(props) {
             flipSpeed={speed}
           />
         </div>
+        <div className="separator"></div>
 
         {/* <div className="timer-container flex-center padding-large">
           <Timer
@@ -111,7 +110,7 @@ function App(props) {
             isPaused={isPaused}
           />
         </div> */}
-        <div className="controls-container flex-center padding-medium">
+        <div className="controls-container flex-center padding-small">
           {controlButton}
         </div>
       </main>
