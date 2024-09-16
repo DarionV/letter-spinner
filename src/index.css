@@ -1,9 +1,13 @@
 .padding-large {
-  padding: 32px;
+  padding: 24px;
 }
 
 .padding-medium {
-  padding: 24px;
+  padding: 18px;
+}
+
+.padding-small {
+  padding: 8px;
 }
 
 .flex-center {
@@ -11,4 +15,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
