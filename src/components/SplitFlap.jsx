@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Letter({ character, initialCharacter, flipSpeed }) {
+function SplitFlap({ character, initialCharacter, flipSpeed }) {
   const [newCharacter, setNewCharacter] = useState(initialCharacter);
   //   const [character, setCharacter] = useState("");
   const [prevCharacter, setPrevCharacter] = useState("");
@@ -94,4 +94,4 @@ function Letter({ character, initialCharacter, flipSpeed }) {
   );
 }
 
-export default Letter;
+export default SplitFlap;

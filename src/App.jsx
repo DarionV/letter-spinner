@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import "./index.css";
 import Timer from "./components/Timer";
-import Letter from "./components/Letter";
+import SplitFlap from "./components/SplitFlap";
 
 function App(props) {
   const [isFlipping, setFlipping] = useState(false);
@@ -94,7 +94,7 @@ function App(props) {
         </div>
         <div className="separator"></div>
         <div className="padding-large flex-center">
-          <Letter
+          <SplitFlap
             character={letter}
             initialCharacter={letter}
             flipSpeed={speed}
@@ -102,14 +102,14 @@ function App(props) {
         </div>
         <div className="separator"></div>
 
-        {/* <div className="timer-container flex-center padding-large">
+        <div className="timer-container flex-center padding-large">
           <Timer
             isFlipping={isFlipping}
             toggleCountingDown={toggleCountingDown}
             initialTime={time}
             isPaused={isPaused}
           />
-        </div> */}
+        </div>
         <div className="controls-container flex-center padding-small">
           {controlButton}
         </div>
