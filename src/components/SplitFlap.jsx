@@ -21,7 +21,8 @@ function SplitFlap({
   const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
   const wheelFlipClass = isFlipping ? "wheel-flip" : "";
 
-  const fontSize = (size * 2) / 2;
+  const fontSize = (size * 10) / 2;
+  // const fontSize = 100;
 
   useEffect(() => {
     flip();
@@ -43,7 +44,8 @@ function SplitFlap({
 
   return (
     <>
-      <div className="unit-frame" style={{ fontSize: `${fontSize}px` }}>
+      {/* <div className="unit-frame" style={{ fontSize: `${fontSize}%` }}> */}
+      <div className="unit-frame">
         <img src="images/unit-container.svg" height={size} alt="" />
         <div className="unit-container">
           <div
@@ -51,7 +53,10 @@ function SplitFlap({
             style={{ animationDuration: `${flipSpeed}ms` }}
           ></div>
           <div className="letter-frame flex-center">
-            <div className="upper-flap-container">
+            <div
+              className="upper-flap-container"
+              style={{ fontSize: `${fontSize}%` }}
+            >
               <div
                 className={`upper-flap ${upperFlapFlipNextClass}`}
                 style={{ animationDuration: `${flipSpeed}ms` }}
@@ -65,7 +70,10 @@ function SplitFlap({
                 <div>{prevCharacter.toUpperCase()}</div>
               </div>
             </div>
-            <div className="lower-flap-container">
+            <div
+              className="lower-flap-container"
+              style={{ fontSize: `${fontSize}%` }}
+            >
               <div
                 className={`lower-flap  ${lowerFlapFlipNextClass}`}
                 style={{ animationDuration: `${flipSpeed}ms` }}
