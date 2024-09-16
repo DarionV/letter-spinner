@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 
-function SplitFlap({ character, initialCharacter, flipSpeed }) {
+function SplitFlap({
+  character = "?",
+  initialCharacter = "?",
+  flipSpeed = 800,
+  size = 250,
+}) {
   const [newCharacter, setNewCharacter] = useState(initialCharacter);
   //   const [character, setCharacter] = useState("");
   const [prevCharacter, setPrevCharacter] = useState("");
@@ -15,6 +20,8 @@ function SplitFlap({ character, initialCharacter, flipSpeed }) {
   const lowerFlapFlipNextClass = isFlipping ? "lower-flap-flip-next" : "";
   const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
   const wheelFlipClass = isFlipping ? "wheel-flip" : "";
+
+  const fontSize = (size * 2) / 2;
 
   useEffect(() => {
     flip();
@@ -36,8 +43,8 @@ function SplitFlap({ character, initialCharacter, flipSpeed }) {
 
   return (
     <>
-      <div className="unit-frame">
-        <img src="images/unit-container.svg" height="250px" alt="" />
+      <div className="unit-frame" style={{ fontSize: `${fontSize}px` }}>
+        <img src="images/unit-container.svg" height={size} alt="" />
         <div className="unit-container">
           <div
             className={`wheel ${wheelFlipClass}`}
