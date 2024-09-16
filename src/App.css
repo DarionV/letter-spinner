@@ -245,7 +245,7 @@ nav {
   animation-timing-function: linear;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 100px) {
   .upper-flap-flip {
     animation: upper-flap-flip-light;
     animation-timing-function: linear;
@@ -268,9 +268,9 @@ nav {
   50%,
   100% {
     box-shadow: none;
-    transform: rotateX(-85deg);
+    transform: rotateX(-90deg);
     translate: 0px 15%;
-    filter: brightness(20%) blur(30px);
+    filter: brightness(20%) blur(13px);
   }
 }
 
@@ -280,7 +280,7 @@ nav {
   }
   50%,
   100% {
-    transform: rotateX(-85deg);
+    transform: rotateX(-90deg);
     translate: 0px 15%;
   }
 }
@@ -313,9 +313,9 @@ nav {
   0%,
   50% {
     display: none;
-    transform: rotateX(83deg);
+    transform: rotateX(90deg);
     box-shadow: 0px 50px 20px rgb(0, 0, 0, 0.9);
-    filter: brightness(200%) blur(30px);
+    filter: brightness(200%) blur(13px);
   }
   100% {
     transform: rotateX(0deg);
@@ -327,7 +327,7 @@ nav {
   50% {
     display: none;
     /* transform: rotate3d(1, 0, 0, 83deg); */
-    transform: rotateX(83deg);
+    transform: rotateX(90deg);
   }
   100% {
     transform: rotateX(0deg);

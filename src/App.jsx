@@ -13,10 +13,10 @@ function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
-  const FLIP_SPEED_IN_MS = 170;
+  const FLIP_SPEED_IN_MS = 180;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
-  const NR_OF_FLIPS = 19;
+  const NR_OF_FLIPS = 16;
 
   let timerActive = true;
   let controlButton = "";
@@ -76,8 +76,8 @@ function App(props) {
           setShouldFlip(false);
           //   setCountingDown(true);
         }
-        setSpeed(speed + Math.pow(i, 1.4));
-      }, i * (speed + Math.pow(i, 1.4)));
+        setSpeed(speed + Math.pow(i, 1.8));
+      }, i * (speed + Math.pow(i, 1.8)));
     }
   }, [shouldFlip]);
 
