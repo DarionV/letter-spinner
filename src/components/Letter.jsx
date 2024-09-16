@@ -39,7 +39,10 @@ function Letter({ character, initialCharacter, flipSpeed }) {
       <div className="unit-frame">
         <img src="images/unit-container.svg" height="250px" alt="" />
         <div className="unit-container">
-          <div className={`wheel ${wheelFlipClass}`}></div>
+          <div
+            className={`wheel ${wheelFlipClass}`}
+            style={{ animationDuration: `${flipSpeed}ms` }}
+          ></div>
           <div className="letter-frame flex-center">
             <div className="upper-flap-container">
               <div
@@ -81,7 +84,10 @@ function Letter({ character, initialCharacter, flipSpeed }) {
               <div className="lower-flaps-shadow"></div>
             </div>
           </div>
-          <div className={`wheel ${wheelFlipClass}`}></div>
+          <div
+            className={`wheel ${wheelFlipClass}`}
+            style={{ animationDuration: `${flipSpeed}ms` }}
+          ></div>
         </div>
       </div>
     </>

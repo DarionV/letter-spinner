@@ -13,7 +13,7 @@ function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
-  const FLIP_SPEED_IN_MS = 150;
+  const FLIP_SPEED_IN_MS = 170;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
   const NR_OF_FLIPS = 19;
