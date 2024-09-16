@@ -87,10 +87,10 @@ function App(props) {
       </nav>
       <main>
         <div className="title-container">
-          <h1 className="padding-large">Letter Flipper</h1>
+          <h1 className="padding-small">Letter Flipper</h1>
           {/* isPaused: {isPaused.toString()}
           CountingDown: {isCountingDown.toString()} */}
-          flipSpeed: {speed}
+          {/* flipSpeed: {speed} */}
         </div>
         <div className="separator"></div>
         <div className="padding-large flex-center">
@@ -102,7 +102,7 @@ function App(props) {
         </div>
         <div className="separator"></div>
 
-        <div className="timer-container flex-center padding-large">
+        <div className="flex-center padding-large">
           <Timer
             isFlipping={isFlipping}
             toggleCountingDown={toggleCountingDown}

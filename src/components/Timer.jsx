@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SplitFlap from "./SplitFlap";
 
 let primeTimer = false;
 let shouldContinue = false;
@@ -74,6 +75,12 @@ function Timer({ isFlipping, toggleCountingDown, initialTime, isPaused }) {
 
   return (
     <>
+      <div className="timer-container">
+        <SplitFlap size={100}></SplitFlap>
+        <SplitFlap size={100}></SplitFlap>
+        <SplitFlap size={100}></SplitFlap>
+        <SplitFlap size={100}></SplitFlap>
+      </div>
       Time Remaining: {time.minutes.toString().padStart(2, "0")}:
       {time.seconds.toString().padStart(2, "0")}
     </>

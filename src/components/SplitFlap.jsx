@@ -4,7 +4,7 @@ function SplitFlap({
   character = "?",
   initialCharacter = "?",
   flipSpeed = 800,
-  size = 250,
+  size = 220,
 }) {
   const [newCharacter, setNewCharacter] = useState(initialCharacter);
   //   const [character, setCharacter] = useState("");
