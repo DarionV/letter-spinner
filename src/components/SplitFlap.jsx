@@ -1,50 +1,77 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo, useMemo, useCallback } from "react";
 
-function SplitFlap({
+const SplitFlap = memo(function SplitFlap({
   character = "?",
   initialCharacter = "?",
   flipSpeed = 100,
   size = 220,
 }) {
-  const [newCharacter, setNewCharacter] = useState(initialCharacter);
-  //   const [character, setCharacter] = useState("");
-  const [prevCharacter, setPrevCharacter] = useState("");
-  const [isFlipping, setIsFlipping] = useState(false);
-  //   const [currentLetter, setCurrentLetter] = useState("?");
+  const [flipState, setFlipState] = useState({
+    newCharacter: initialCharacter,
+    prevCharacter: initialCharacter,
+    isFlipping: false,
+  });
 
-  //   const FLIP_SPEED_IN_MS = 500;
+  const { newCharacter, prevCharacter, isFlipping } = flipState;
 
-  const upperFlapFlipNextClass = isFlipping ? "upper-flap-flip-next" : "";
-  const upperFlapFlipClass = isFlipping ? "upper-flap-flip" : "";
-  const lowerFlapFlipClass = isFlipping ? "lower-flap-flip" : "";
-  const lowerFlapFlipNextClass = isFlipping ? "lower-flap-flip-next" : "";
-  const lowerFlapFlipBackClass = isFlipping ? "lower-flap-flip-back" : "";
-  const wheelFlipClass = isFlipping ? "wheel-flip" : "";
+  const upperFlapFlipNextClass = useMemo(
+    () => (isFlipping ? "upper-flap-flip-next" : ""),
+    [isFlipping]
+  );
+  const upperFlapFlipClass = useMemo(
+    () => (isFlipping ? "upper-flap-flip" : ""),
+    [isFlipping]
+  );
+  const lowerFlapFlipClass = useMemo(
+    () => (isFlipping ? "lower-flap-flip" : ""),
+    [isFlipping]
+  );
+  const lowerFlapFlipNextClass = useMemo(
+    () => (isFlipping ? "lower-flap-flip-next" : ""),
+    [isFlipping]
+  );
+  const lowerFlapFlipBackClass = useMemo(
+    () => (isFlipping ? "lower-flap-flip-back" : ""),
+    [isFlipping]
+  );
+  const wheelFlipClass = useMemo(
+    () => (isFlipping ? "wheel-flip" : ""),
+    [isFlipping]
+  );
 
-  const fontSize = (size * 10) / 2;
-  // const fontSize = 100;
+  const fontSize = useMemo(() => (size * 10) / 2, [size]);
 
   useEffect(() => {
     flip();
   }, [character]);
 
-  //   function flipLetters() {
-  //     props.toggleFlipping();
-  //     scrambleLetters();
-  //   }
-
-  function flip() {
-    setIsFlipping(true);
-    setNewCharacter(character);
+  const flip = useCallback(() => {
+    setFlipState((prev) => {
+      if (prev.prevCharacter === character && prev.isFlipping === false) {
+        return prev;
+      }
+      return {
+        ...prev,
+        newCharacter: character,
+        isFlipping: true,
+      };
+    });
     setTimeout(() => {
-      setIsFlipping(false);
-      setPrevCharacter(character);
+      setFlipState((prev) => {
+        if (prev.prevCharacter === character && prev.isFlipping === false) {
+          return prev;
+        }
+        return {
+          ...prev,
+          prevCharacter: character,
+          isFlipping: false,
+        };
+      });
     }, flipSpeed - 100);
-  }
+  }, [character, flipSpeed]);
 
   return (
     <>
-      {/* <div className="unit-frame" style={{ fontSize: `${fontSize}%` }}> */}
       <div className="unit-frame">
         <img src="images/unit-container.svg" height={size} alt="" />
         <div className="unit-container">
@@ -107,6 +134,6 @@ function SplitFlap({
       </div>
     </>
   );
-}
+});
 
 export default SplitFlap;

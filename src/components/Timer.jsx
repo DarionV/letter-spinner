@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import SplitFlap from "./SplitFlap";
 
 let primeTimer = false;
@@ -8,7 +8,13 @@ let shouldReset = false;
 const size = 100;
 const flipSpeed = 200;
 
-function Timer({ isFlipping, toggleCountingDown, initialTime, isPaused }) {
+const Timer = memo(function Timer({
+  isFlipping = false,
+  toggleCountingDown,
+  initialTime,
+  isPaused,
+}) {
+  console.log("timer");
   const [time, setTime] = useState(initialTime);
   const [shouldCountDown, setShouldCountDown] = useState(false);
   const [digitOne, setDigitOne] = useState("0");
@@ -86,36 +92,36 @@ function Timer({ isFlipping, toggleCountingDown, initialTime, isPaused }) {
 
   return (
     <>
-      <div className="timer-container">
+      {/* <div className="timer-container">
         <SplitFlap
           size={size}
           character={digitOne}
-          initialCharacter={digitOne}
+          // initialCharacter={digitOne}
           flipSpeed={flipSpeed}
         ></SplitFlap>
         <SplitFlap
           size={size}
           character={digitTwo}
-          initialCharacter={digitTwo}
+          // initialCharacter={digitTwo}
           flipSpeed={flipSpeed}
         ></SplitFlap>
         <SplitFlap
           size={size}
           character={digitThree}
-          initialCharacter={digitThree}
+          // initialCharacter={digitThree}
           flipSpeed={flipSpeed}
         ></SplitFlap>
         <SplitFlap
           size={size}
           character={digitFour}
-          initialCharacter={digitFour}
+          // initialCharacter={digitFour}
           flipSpeed={flipSpeed}
         ></SplitFlap>
-      </div>
+      </div> */}
       Time Remaining: {time.minutes.toString().padStart(2, "0")}:
       {time.seconds.toString().padStart(2, "0")}
     </>
   );
-}
+});
 
 export default Timer;

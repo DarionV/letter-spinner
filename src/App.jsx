@@ -1,19 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo, memo } from "react";
 import "./App.css";
 import "./index.css";
 import Timer from "./components/Timer";
 import SplitFlap from "./components/SplitFlap";
 
-function App(props) {
+const App = memo(function App(props) {
   const [isFlipping, setFlipping] = useState(false);
+  const [requestStart, setRequestStart] = useState(false);
   const [isCountingDown, setCountingDown] = useState(false);
-  const [time, setTime] = useState({ minutes: 2, seconds: 5 });
+  // const [time, setTime] = useState({ minutes: 2, seconds: 5 });
   const [isPaused, setPaused] = useState(false);
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
   const FLIP_SPEED_IN_MS = 180;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
+
+  const time = useMemo(() => ({ minutes: 2, seconds: 5 }), []);
 
   const NR_OF_FLIPS = 15;
 
@@ -39,9 +42,9 @@ function App(props) {
     setShouldFlip(true);
   }
 
-  function toggleCountingDown() {
+  const toggleCountingDown = useCallback(() => {
     setCountingDown(!isCountingDown);
-  }
+  }, []);
 
   function togglePause() {
     setPaused(!isPaused);
@@ -90,7 +93,7 @@ function App(props) {
           <h1 className="padding-small">Letter Flipper</h1>
           {/* isPaused: {isPaused.toString()}
           CountingDown: {isCountingDown.toString()} */}
-          {/* flipSpeed: {speed} */}
+          isFlipping: {isFlipping.toString()}
         </div>
         <div className="separator"></div>
         <div className="padding-large flex-center">
@@ -104,6 +107,7 @@ function App(props) {
 
         <div className="flex-center padding-large">
           <Timer
+            // requestStart={requestStart}
             isFlipping={isFlipping}
             toggleCountingDown={toggleCountingDown}
             initialTime={time}
@@ -117,6 +121,6 @@ function App(props) {
       <footer>Credits</footer>
     </>
   );
-}
+});
 
 export default App;
