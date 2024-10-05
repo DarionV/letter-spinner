@@ -381,6 +381,14 @@ nav {
   gap: 12px;
 }
 
+.timer {
+  color: rgb(212, 212, 212);
+  font-size: 5rem;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .controls-container {
   /* background-color: beige; */
   border: 1px solid gray;

@@ -91,34 +91,10 @@ const Timer = memo(function Timer({
 
   return (
     <>
-      {/* <div className="timer-container">
-        <SplitFlap
-          size={size}
-          character={digitOne}
-          // initialCharacter={digitOne}
-          flipSpeed={flipSpeed}
-        ></SplitFlap>
-        <SplitFlap
-          size={size}
-          character={digitTwo}
-          // initialCharacter={digitTwo}
-          flipSpeed={flipSpeed}
-        ></SplitFlap>
-        <SplitFlap
-          size={size}
-          character={digitThree}
-          // initialCharacter={digitThree}
-          flipSpeed={flipSpeed}
-        ></SplitFlap>
-        <SplitFlap
-          size={size}
-          character={digitFour}
-          // initialCharacter={digitFour}
-          flipSpeed={flipSpeed}
-        ></SplitFlap>
-      </div> */}
-      Time Remaining: {time.minutes.toString().padStart(2, "0")}:
-      {time.seconds.toString().padStart(2, "0")}
+      <p className="timer">
+        {time.minutes.toString().padStart(2, "0")}:
+        {time.seconds.toString().padStart(2, "0")}
+      </p>
     </>
   );
 });
