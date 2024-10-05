@@ -273,13 +273,17 @@ nav {
 @keyframes upper-flap-flip {
   5% {
     transform: rotateX(0deg);
+    /* background: linear-gradient(#2c2c2c, #2d2d2d); */
   }
   50%,
   100% {
     box-shadow: none;
-    transform: rotateX(-90deg) translateY(15%);
+    transform: rotateX(-90deg) translateY(15%) scaleY(200%);
+    /* transform: scaleY(200%) translateY(50%); */
+    z-index: 200;
     /* translate: 0px 15%; */
-    filter: brightness(20%) blur(13px);
+    /* background: linear-gradient(#2c2c2c, #2d2d2d); */
+    filter: brightness(20%) blur(10px);
   }
 }
 
@@ -323,13 +327,14 @@ nav {
 @keyframes lower-flap-flip-next {
   0%,
   50% {
+    background: linear-gradient(#cacaca, #cdcdcd);
     display: none;
-    /* transform: rotateX(90deg); */
-    /* box-shadow: 0px 50px 20px rgb(0, 0, 0, 0.9); */
-    /* filter: brightness(200%) blur(13px); */
+    transform: rotateX(90deg);
+    box-shadow: 0px 50px 20px rgb(0, 0, 0, 0.9);
+    filter: blur(5px);
   }
   100% {
-    /* transform: rotateX(0deg); */
+    transform: rotateX(0deg);
   }
 }
 

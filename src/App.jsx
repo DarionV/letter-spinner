@@ -13,7 +13,7 @@ const App = memo(function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
-  const FLIP_SPEED_IN_MS = 170;
+  const FLIP_SPEED_IN_MS = 180;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
   const time = useMemo(() => ({ minutes: 2, seconds: 5 }), []);
