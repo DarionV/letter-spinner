@@ -273,12 +273,12 @@ nav {
 @keyframes upper-flap-flip {
   5% {
     transform: rotateX(0deg);
-    opacity: 20%;
+    opacity: 40%;
     background: linear-gradient(#2c2c2c, #2d2d2d);
   }
   50%,
   100% {
-    opacity: 100%;
+    opacity: 40%;
     box-shadow: none;
     transform: rotateX(-90deg) translateY(15%) scaleY(200%);
     /* transform: scaleY(200%) translateY(50%); */
