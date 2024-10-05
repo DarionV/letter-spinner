@@ -14,7 +14,6 @@ const Timer = memo(function Timer({
   initialTime,
   isPaused,
 }) {
-  console.log("timer");
   const [time, setTime] = useState(initialTime);
   const [shouldCountDown, setShouldCountDown] = useState(false);
   const [digitOne, setDigitOne] = useState("0");

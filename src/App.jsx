@@ -13,12 +13,12 @@ const App = memo(function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
-  const FLIP_SPEED_IN_MS = 180;
+  const FLIP_SPEED_IN_MS = 170;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
   const time = useMemo(() => ({ minutes: 2, seconds: 5 }), []);
 
-  const NR_OF_FLIPS = 15;
+  const NR_OF_FLIPS = 20;
 
   let timerActive = true;
   let controlButton = "";
@@ -62,7 +62,7 @@ const App = memo(function App(props) {
     setLetters(scrambleLetters(letters));
     setFlipping(true);
     setSpeed(FLIP_SPEED_IN_MS);
-    const speedDecreaseFactor = 1.8;
+    const speedDecreaseFactor = 1;
 
     for (let i = 0; i < NR_OF_FLIPS; i++) {
       setTimeout(() => {
@@ -76,8 +76,9 @@ const App = memo(function App(props) {
           }, 400);
         }
         // Decrease speed exponentially
-        setSpeed(speed + Math.pow(i, speedDecreaseFactor));
-      }, i * (speed + Math.pow(i, speedDecreaseFactor)));
+        // setSpeed(speed + Math.pow(i, speedDecreaseFactor));
+        // }, i * (speed + Math.pow(i, speedDecreaseFactor)));
+      }, i * speed);
     }
   }, [shouldFlip]);
 
