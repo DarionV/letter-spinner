@@ -3,6 +3,7 @@ import "./App.css";
 import "./index.css";
 import Timer from "./components/Timer";
 import SplitFlap from "./components/SplitFlap";
+import flap_01 from "./audio/flap_01.mp3";
 
 const App = memo(function App(props) {
   const [isFlipping, setFlipping] = useState(false);
@@ -13,10 +14,12 @@ const App = memo(function App(props) {
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
   const [letters, setLetters] = useState(scrambleLetters(props.letters));
-  const FLIP_SPEED_IN_MS = 180;
+  const FLIP_SPEED_IN_MS = 165;
   const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
 
   const time = useMemo(() => ({ minutes: 2, seconds: 5 }), []);
+
+  const audio_flap_01 = new Audio(flap_01);
 
   const NR_OF_FLIPS = 20;
 
@@ -40,6 +43,7 @@ const App = memo(function App(props) {
   function startFlip() {
     setSpeed(FLIP_SPEED_IN_MS);
     setShouldFlip(true);
+    audio_flap_01.play();
   }
 
   const toggleCountingDown = useCallback(() => {
