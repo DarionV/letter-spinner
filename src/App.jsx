@@ -3,7 +3,7 @@ import "./App.css";
 import "./index.css";
 import Timer from "./components/Timer";
 import SplitFlap from "./components/SplitFlap";
-import flap_01 from "./audio/flap_01.mp3";
+import flap_01 from "./audio/flap_02.mp3";
 
 const App = memo(function App(props) {
   const [isFlipping, setFlipping] = useState(false);
