@@ -30,6 +30,9 @@ const LETTERS = [
   "x",
   "y",
   "z",
+  "Å",
+  "Ä",
+  "Ö",
 ];
 
 createRoot(document.getElementById("root")).render(

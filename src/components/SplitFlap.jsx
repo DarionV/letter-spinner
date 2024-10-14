@@ -4,7 +4,7 @@ const SplitFlap = memo(function SplitFlap({
   character = "?",
   initialCharacter = "?",
   flipSpeed = 100,
-  size = 220,
+  size = 250,
 }) {
   const [flipState, setFlipState] = useState({
     newCharacter: initialCharacter,

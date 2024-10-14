@@ -23,7 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100vh;
   background: linear-gradient(45deg, #333434, #545555);
 }
@@ -31,6 +31,14 @@ main,
 nav,
 footer {
   z-index: 2;
+}
+
+footer {
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  height: 30px;
 }
 .noise {
   content: "";
@@ -52,7 +60,11 @@ footer {
   display: flex;
   flex-direction: column;
   height: 100%;
-  border: 1px solid black;
+  width: 400px;
+  border-left: 2px solid #101010;
+  border-right: 2px solid #101010;
+  box-shadow: inset 2px 0px 0px rgb(88, 88, 88),
+    inset -2px 0px 0px rgb(88, 88, 88);
 }
 
 nav {
@@ -62,7 +74,7 @@ nav {
 }
 .title-container {
   /* background-color: gray; */
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   color: var(--font-color-white);
 }
 
@@ -174,11 +186,12 @@ nav {
 }
 
 .lower-flap div {
-  transform: translateY(-48%);
+  /* transform: translateY(-48%); */
+  transform: translateY(-44%);
 }
 
 .upper-flap div {
-  transform: translateY(-8%);
+  /* transform: translateY(-8%); */
 }
 
 .flipped-0 {
@@ -254,7 +267,7 @@ nav {
   animation-timing-function: linear;
 }
 
-@media screen and (max-width: 200px) {
+/* @media screen and (max-width: 200px) {
   .upper-flap-flip {
     animation: upper-flap-flip-light;
     animation-timing-function: linear;
@@ -268,7 +281,7 @@ nav {
     animation: wheel-light;
     animation-timing-function: linear;
   }
-}
+} */
 
 @keyframes upper-flap-flip {
   5% {
@@ -391,10 +404,5 @@ nav {
 
 .controls-container {
   /* background-color: beige; */
-  border: 1px solid gray;
-}
-
-footer {
-  margin-top: auto;
-  border: 1px solid red;
+  /* border: 1px solid gray; */
 }

@@ -1,12 +1,8 @@
 import { useEffect, useState, memo } from "react";
-import SplitFlap from "./SplitFlap";
 
 let primeTimer = false;
 let shouldContinue = false;
 let shouldReset = false;
-
-const size = 100;
-const flipSpeed = 200;
 
 const Timer = memo(function Timer({
   isFlipping = false,
@@ -16,10 +12,6 @@ const Timer = memo(function Timer({
 }) {
   const [time, setTime] = useState(initialTime);
   const [shouldCountDown, setShouldCountDown] = useState(false);
-  const [digitOne, setDigitOne] = useState("0");
-  const [digitTwo, setDigitTwo] = useState("0");
-  const [digitThree, setDigitThree] = useState("0");
-  const [digitFour, setDigitFour] = useState("0");
 
   useEffect(() => {
     if (isPaused) {
@@ -48,19 +40,6 @@ const Timer = memo(function Timer({
       primeTimer = false;
     }
   }, [isFlipping]);
-
-  useEffect(() => {
-    if (time.seconds === 0 && time.minutes === 0) {
-      if (!shouldReset) {
-        toggleCountingDown();
-        shouldReset = true;
-      }
-    }
-    setDigitOne(time.minutes.toString().padStart(2, "0").at(0));
-    setDigitTwo(time.minutes.toString().padStart(2, "0").at(1));
-    setDigitThree(time.seconds.toString().padStart(2, "0").at(0));
-    setDigitFour(time.seconds.toString().padStart(2, "0").at(1));
-  }, [time]);
 
   useEffect(() => {
     if (!shouldCountDown) return;
