@@ -23,7 +23,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid red; */
   height: 100vh;
   background: linear-gradient(45deg, #333434, #545555);
 }
@@ -73,8 +72,6 @@ nav {
   align-items: center;
 }
 .title-container {
-  /* background-color: gray; */
-  /* border: 1px solid gray; */
   color: var(--font-color-white);
 }
 
@@ -85,16 +82,13 @@ nav {
   box-shadow: 0px 2px 1px rgba(255, 255, 255, 0.2);
 }
 
-/* Letter */
+/* ------------------------------ Letter start ------------------------------ */
 
 .unit-frame {
   position: relative;
-
-  /* border: 1px solid rgba(195, 0, 255, 0.888); */
 }
 
 .unit-container {
-  /* border: 1px solid rgba(255, 0, 0, 0.888); */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -106,7 +100,6 @@ nav {
 }
 
 .wheel {
-  /* border: 1px solid blue; */
   background: linear-gradient(#111111, #494949, #676159, #101010);
   width: 4%;
   height: 28%;
@@ -114,7 +107,6 @@ nav {
 }
 
 .letter-frame {
-  /* border: 1px solid green; */
   height: 96%;
   width: 82%;
   flex-direction: column;
@@ -127,12 +119,10 @@ nav {
 .upper-flap-container {
   position: relative;
   width: 100%;
-  /* border: 1px solid red; */
 }
 
 .upper-flap-container {
   flex: 1.2;
-  /* overflow: hidden; */
   box-shadow: 0px 3px 4px rgb(0, 0, 0, 0.5);
 }
 
@@ -147,12 +137,8 @@ nav {
   height: 100%;
   width: 100%;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
-  /* font-size: 1300%; */
   color: var(--font-color-white);
   overflow: hidden;
-  /* font-family: "Rajdhani", sans-serif;
-  font-weight: 700;
-  font-style: normal; */
 
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -163,30 +149,21 @@ nav {
 }
 
 .upper-flap {
-  /* background-image: url(/public/images/upper-flap.png);
-  background-position: center;
-  background-size: 600%; */
-  /* background: linear-gradient(#56585a, #55565b); */
   background: linear-gradient(#707376, #55565b);
   box-shadow: inset 0px 2px 3px rgb(0, 0, 0, 0.9),
     0px 2px 6px rgba(0, 0, 0, 0.5);
-  /* border: 1px solid rgb(76, 76, 76); */
   transform-origin: bottom left;
   text-align: center;
 }
 
 .lower-flap {
   height: 65%;
-  /* background-image: url(/public/images/lower-flap.png);
-  background-position: center;
-  background-size: 800%; */
   background: linear-gradient(#4f4f51, #504f4f);
   text-align: center;
   transform-origin: top left;
 }
 
 .lower-flap div {
-  /* transform: translateY(-48%); */
   transform: translateY(-44%);
 }
 
@@ -196,7 +173,6 @@ nav {
 
 .flipped-0 {
   z-index: 5;
-  /* border: 1px solid red; */
 }
 
 .flipped-1 {
@@ -233,7 +209,10 @@ nav {
   height: 100%;
   width: 100%;
 }
-/* Letter animation */
+
+/* ------------------------------- Letter end ------------------------------- */
+
+/* ---------------------------- Letter animation start ---------------------------- */
 .upper-flap-flip {
   animation: upper-flap-flip;
   animation-timing-function: linear;
@@ -267,22 +246,6 @@ nav {
   animation-timing-function: linear;
 }
 
-/* @media screen and (max-width: 200px) {
-  .upper-flap-flip {
-    animation: upper-flap-flip-light;
-    animation-timing-function: linear;
-  }
-  .lower-flap-flip-next {
-    animation: lower-flap-flip-next-light;
-    animation-timing-function: linear;
-    z-index: 6;
-  }
-  .wheel-flip {
-    animation: wheel-light;
-    animation-timing-function: linear;
-  }
-} */
-
 @keyframes upper-flap-flip {
   5% {
     transform: rotateX(0deg);
@@ -294,33 +257,17 @@ nav {
     opacity: 30%;
     box-shadow: none;
     transform: rotateX(-90deg) translateY(15%) scaleY(200%);
-    /* transform: scaleY(200%) translateY(50%); */
     z-index: 200;
-    /* translate: 0px 15%; */
-    /* background: linear-gradient(#2c2c2c, #2d2d2d); */
     filter: brightness(10%) blur(7px);
-  }
-}
-
-@keyframes upper-flap-flip-light {
-  5% {
-    /* transform: rotateX(0deg); */
-  }
-  50%,
-  100% {
-    /* transform: rotateX(-90deg) translateY(15%); */
-    /* translate: 0px 15%; */
   }
 }
 
 @keyframes upper-flap-flip-next {
   0% {
-    /* translate: 0px -15%; */
     transform: translateY(-15%);
   }
   50%,
   100% {
-    /* translate: 0px 0%; */
     transform: translateY(0%);
   }
 }
@@ -353,19 +300,6 @@ nav {
   }
 }
 
-@keyframes lower-flap-flip-next-light {
-  0%,
-  50% {
-    display: none;
-    /* transform: rotate3d(1, 0, 0, 83deg); */
-    /* transform: rotateX(90deg); */
-  }
-  100% {
-    /* transform: rotateX(0deg); */
-    /* transform: rotate3d(1, 0, 0, 0deg); */
-  }
-}
-
 @keyframes wheel {
   0%,
   50% {
@@ -385,11 +319,11 @@ nav {
   }
 }
 
-/* Timer */
+/* -------------------------- Letter animation end -------------------------- */
+
+/* ---------------------------------- Timer start--------------------------------- */
 
 .timer-container {
-  /* background-color: rgb(131, 131, 162); */
-  /* border: 1px solid gray; */
   display: flex;
   gap: 12px;
 }
@@ -402,7 +336,4 @@ nav {
   font-style: normal;
 }
 
-.controls-container {
-  /* background-color: beige; */
-  /* border: 1px solid gray; */
-}
+/* -------------------------------- Timer end ------------------------------- */

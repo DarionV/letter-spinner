@@ -14,6 +14,7 @@ const SplitFlap = memo(function SplitFlap({
 
   const { newCharacter, prevCharacter, isFlipping } = flipState;
 
+  // Classes used for triggering flip animation
   const upperFlapFlipNextClass = useMemo(
     () => (isFlipping ? "upper-flap-flip-next" : ""),
     [isFlipping]
@@ -68,7 +69,7 @@ const SplitFlap = memo(function SplitFlap({
         };
       });
     }, flipSpeed - 100);
-  }, [character, flipSpeed]);
+  }, [character]);
 
   return (
     <>

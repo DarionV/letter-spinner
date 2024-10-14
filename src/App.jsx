@@ -1,21 +1,18 @@
-import { useState, useEffect, useCallback, useMemo, memo } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import "./App.css";
 import "./index.css";
-import Timer from "./components/Timer";
 import SplitFlap from "./components/SplitFlap";
 import flap_01 from "./audio/flap_02.mp3";
+import { scrambleLetters } from "./utils";
 
 const App = memo(function App(props) {
   const [isFlipping, setFlipping] = useState(false);
   const [isCountingDown, setCountingDown] = useState(false);
-  const [isPaused, setPaused] = useState(false);
+  // const [isPaused, setPaused] = useState(false);
   const [shouldFlip, setShouldFlip] = useState(false);
   const [letter, setLetter] = useState("?");
-  const [letters, setLetters] = useState(scrambleLetters(props.letters));
   const FLIP_SPEED_IN_MS = 165;
-  const [speed, setSpeed] = useState(FLIP_SPEED_IN_MS);
-
-  const time = useMemo(() => ({ minutes: 2, seconds: 5 }), []);
+  let letters = scrambleLetters(props.letters);
 
   const audio_flap_01 = new Audio(flap_01);
 
@@ -36,36 +33,14 @@ const App = memo(function App(props) {
   }
 
   function startFlip() {
-    setSpeed(FLIP_SPEED_IN_MS);
     setShouldFlip(true);
     audio_flap_01.play();
   }
 
-  function reset() {
-    setCountingDown(false);
-  }
-
-  const toggleCountingDown = useCallback(() => {
-    setCountingDown(!isCountingDown);
-  }, []);
-
-  function togglePause() {
-    setPaused(!isPaused);
-  }
-
-  function scrambleLetters(array) {
-    let scrambledLetters = [...array].sort(() => {
-      return Math.random() - 0.5;
-    });
-    return scrambledLetters;
-  }
-
   useEffect(() => {
     if (!shouldFlip) return;
-    setLetters(scrambleLetters(letters));
+    letters = scrambleLetters(letters);
     setFlipping(true);
-    setSpeed(FLIP_SPEED_IN_MS);
-    const speedDecreaseFactor = 1;
 
     for (let i = 0; i < NR_OF_FLIPS; i++) {
       setTimeout(() => {
@@ -78,7 +53,7 @@ const App = memo(function App(props) {
             setFlipping(false);
           }, 400);
         }
-      }, i * speed);
+      }, i * FLIP_SPEED_IN_MS);
     }
   }, [shouldFlip]);
 
@@ -98,19 +73,10 @@ const App = memo(function App(props) {
           <SplitFlap
             character={letter}
             initialCharacter={letter}
-            flipSpeed={speed}
+            flipSpeed={FLIP_SPEED_IN_MS}
           />
         </div>
         <div className="separator"></div>
-
-        {/* <div className="flex-center padding-large">
-          <Timer
-            isFlipping={isFlipping}
-            toggleCountingDown={toggleCountingDown}
-            initialTime={time}
-            isPaused={isPaused}
-          />
-        </div> */}
         <div className="controls-container flex-center padding-large">
           {controlButton}
         </div>
