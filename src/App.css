@@ -33,11 +33,13 @@ footer {
 }
 
 footer {
-  color: white;
+  color: rgb(173, 173, 173);
   display: flex;
   justify-content: center;
   margin-top: auto;
   height: 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
 }
 .noise {
   content: "";
