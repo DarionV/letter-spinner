@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, memo } from "react";
+import { useCallback, memo } from "react";
 import "./App.css";
 import "./index.css";
 import SplitFlap from "./components/SplitFlap";
