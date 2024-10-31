@@ -46,14 +46,14 @@ footer {
   display: block;
   height: 100%;
   width: 100%;
-  background-image: url(/public/images/noise.png);
-  background-size: 700px;
+  background-image: url(/public/images/noise_3.webp);
+  background-size: 100px;
   background-position: center;
 
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 8%;
+  opacity: 25%;
   mix-blend-mode: overlay;
 }
 
